@@ -1,0 +1,1 @@
+scss --watch install.master.style.scss:../install.master.style.css
