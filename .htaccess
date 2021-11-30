@@ -1,0 +1,53 @@
+# @*************************************************************************@
+# @ @author Mansur Altamirov (Mansur_TL)                                    @
+# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+# @ @author_email: highexpresstore@gmail.com                                @
+# @*************************************************************************@
+# @ Upflix - The Ultimate Modern Video Sharing Platform                     @
+# @ Copyright (c) 12.07.2020 Upflix. All rights reserved.                   @
+# @*************************************************************************@
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^/$ index.php?app=home [QSA]
+RewriteRule ^home(\/|)$ index.php?app=home [QSA]
+RewriteRule ^confirm_registration(\/|)$ index.php?app=confirm_registration [QSA]
+RewriteRule ^light_theme(\/|)$ index.php?app=light_theme [QSA]
+RewriteRule ^dark_theme(\/|)$ index.php?app=dark_theme [QSA]
+RewriteRule ^language/([a-zA-Z]{6,12})(\/|)$ index.php?app=language&lang=$1 [QSA]
+RewriteRule ^logout(\/|)$ index.php?app=logout [QSA]
+RewriteRule ^watch/(\d+)(\/|)$ index.php?app=watch&id=$1 [QSA]
+RewriteRule ^embed/(\d+)(\/|)$ index.php?app=embed&id=$1 [QSA]
+RewriteRule ^edit_video/(\d+)(\/|)$ index.php?app=edit_video&id=$1 [QSA]
+RewriteRule ^trending(\/|)$ index.php?app=trending [QSA]
+RewriteRule ^history(\/|)$ index.php?app=history [QSA]
+RewriteRule ^faqs(\/|)$ index.php?app=faqs [QSA]
+RewriteRule ^about(\/|)$ index.php?app=about [QSA]
+RewriteRule ^terms(\/|)$ index.php?app=terms [QSA]
+RewriteRule ^privacy_policy(\/|)$ index.php?app=privacy [QSA]
+RewriteRule ^upload_video(\/|)$ index.php?app=upload [QSA]
+RewriteRule ^import_video(\/|)$ index.php?app=import [QSA]
+RewriteRule ^explore(\/|)$ index.php?app=explore [QSA]
+RewriteRule ^notifs(\/|)$ index.php?app=notifs [QSA]
+RewriteRule ^channels(\/|)$ index.php?app=channels [QSA]
+RewriteRule ^404(\/|)$ index.php?app=err404 [QSA]
+RewriteRule ^503(\/|)$ index.php?app=err503 [QSA]
+RewriteRule ^reqauth(\/|)$ index.php?app=auth [QSA]
+RewriteRule ^oauth(\/|)$ index.php?app=oauth [QSA]
+RewriteRule ^admincp(\/|)$ index.php?app=admincp [QSA]
+RewriteRule ^admincp/(\w{3,25})(\/|)$ index.php?app=admincp&tool=$1 [QSA]
+RewriteRule ^settings(\/|)$ index.php?app=settings [QSA]
+RewriteRule ^settings/(general|password|delete|links|verification)(\/|)$ index.php?app=settings&page_tab=$1 [QSA]
+RewriteRule ^@(\w{3,25})(\/|)$ index.php?app=channel&uname=$1 [QSA]
+RewriteRule ^@(\w{3,25})/(videos|playlists|subscriptions|liked|about)(\/|)$ index.php?app=channel&uname=$1&page_tab=$2 [QSA]
+
+#native api rules
+RewriteRule ^native_api/(\w{3,32})/(\w{3,32})$ api.php?api=native&app=$1&action=$2 [QSA]
+ErrorDocument 404 /index.php?app=err404
+
+
+php_value upload_max_filesize 100M
+php_value post_max_size 105M
